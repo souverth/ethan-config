@@ -1,95 +1,121 @@
 {
-    /** ------------ editor setting ------------ **/
-    "editor.fontFamily": "'Fira Code Retina', 'Hack Nerd Font', SF Mono , Monospace",
-    "workbench.iconTheme": "material-icon-theme",
-    "editor.fontLigatures": "'calt', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'zero', 'onum'",
-    "editor.lineHeight": 1.8,
-    "editor.fontSize": 15,
-    "editor.fontWeight": 450,
-    "editor.multiCursorModifier": "ctrlCmd",
-    "editor.guides.bracketPairs": true,
-    "editor.scrollbar.vertical": "hidden",
-    "editor.scrollbar.verticalScrollbarSize": 0,
-    "editor.scrollbar.horizontal": "hidden",
-    "workbench.editor.limit.value": 3,
-    "editor.minimap.autohide": true,
-    "editor.minimap.size": "fit",
-    "workbench.productIconTheme": "bongocat",
-    "editor.scrollbar.horizontalScrollbarSize": 0,
-    "editor.lineNumbers": "on",
-    "editor.folding": true,
-    "editor.glyphMargin": true,
-    "editor.guides.indentation": false,
-    "workbench.editor.highlightModifiedTabs": true,
-    "editor.unicodeHighlight.ambiguousCharacters": false,
-    "editor.unicodeHighlight.invisibleCharacters": false,
-    "editor.stickyScroll.enabled": false,
-    "workbench.tree.indent": 16,
-    "workbench.startupEditor": "none",
-    "workbench.colorCustomizations": {
-      "inlineparameters.annotationBackground": "#282A3600",
-      "inlineparameters.annotationForeground": "#7b82af",
-      "scrollbar.shadow": "#24292e00"
-    },
-    "workbench.editorLargeFileConfirmation": 10024,
-    "workbench.editor.empty.hint": "hidden",
-    "explorer.sortOrder": "type",
+  /** ------------ editor setting ------------ **/
+  "editor.fontFamily": "'Fira Code', 'Hack Nerd Font', SF Mono , Monospace",
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontLigatures": "'calt', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'zero', 'onum'",
+  "editor.lineHeight": 1.8,
+  "editor.fontSize": 15,
+  "editor.fontWeight": 450,
+  "editor.mouseWheelZoom": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.guides.bracketPairs": true,
+  "editor.scrollbar.vertical": "hidden",
+  "editor.scrollbar.verticalScrollbarSize": 0,
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.minimap.autohide": true,
+  "workbench.productIconTheme": "bongocat",
+  "editor.scrollbar.horizontalScrollbarSize": 0,
+  "editor.lineNumbers": "on",
+  "editor.renderFinalNewline":"off",
+  "editor.folding": true,
+  "editor.glyphMargin": true,
+  "editor.guides.indentation": false,
+  "workbench.editor.highlightModifiedTabs": true,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "editor.unicodeHighlight.invisibleCharacters": false,
+  "editor.stickyScroll.enabled": false,
+  "workbench.tree.indent": 16,
+  "workbench.startupEditor": "none",
+  "workbench.colorCustomizations": {
+    "inlineparameters.annotationBackground": "#282A3600",
+    "inlineparameters.annotationForeground": "#7b82af",
+    "scrollbar.shadow": "#24292e00",
+    "statusBar.background": "#041c22",
+    "statusBar.noFolderBackground": "#000000",
+    "statusBar.debuggingBackground": "#000000",
+    "statusBar.foreground": "#c2bcaa",
+    "statusBar.debuggingForeground": "#c2bcaa"
+  },
+  "workbench.editorLargeFileConfirmation": 10024,
+  "workbench.editor.empty.hint": "hidden",
+  "explorer.sortOrder": "type",
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.value": 4,
+
+  /** ------------ cursor ------------ **/
+  "editor.cursorSurroundingLines": 15,
+  "editor.cursorStyle": "line",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorBlinking": "expand",
+
+  /** ------------ Breadcrumbs Configurations ------------ **/
+  "breadcrumbs.enabled": false,
+  "breadcrumbs.symbolPath": "off",
+  "breadcrumbs.filePath": "on",
+
+  /** ------------ Terminal Configurations ------------ **/
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.fontFamily": " 'Hack Nerd Font', Monospace",
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.enableMultiLinePasteWarning": "always",
+  "terminal.integrated.cursorStyle": "underline",
+  "terminal.integrated.cursorBlinking": true,
+
+  /** ------------ git ------------ **/
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+
+  /** ------------ suggest code editor ------------ **/
+  "editor.acceptSuggestionOnEnter": "smart",
+  "editor.inlineSuggest.suppressSuggestions": true,
+  "editor.suggest.showIcons": true,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "Codegeex.Privacy": true,
+  "Codegeex.Comment.LanguagePreference": "English",
+  "Codegeex.Chat.LanguagePreference": "English",
+  "Codegeex.CommitMessage.LanguagePreference": "English",
+
+  /** ------------ formatting ------------ **/
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  /** ------------ custom vscode apc ------------ **/
+  "workbench.activityBar.location": "hidden",
+  "apc.electron": {    "frame": false,
+    "backgroundColor": "rgba(123, 123, 123, 0.5)",
+    "titleBarStyle": "hiddenInset",
+    "opacity": 0.9, 
+  },
+  "window.titleBarStyle": "native",
+  "window.customTitleBarVisibility": "never",
+  "apc.header": {
+    "height": 24,
+    "fontSize": 13
+  },
+  "apc.statusBar": {
+    "position": "editor-bottom",
+    "height": 35,
+    "fontSize": 15
+  },
+
+  /** ------------ color highlight ------------ **/
+  "color-highlight.markerType": "underline",
+  "workbench.colorTheme": "Solarized Osaka",
+  "window.density.editorTabHeight": "compact",
+
+  /** ------------ status bar ------------ **/
+  "statusBarCustomColor.primaryBackgroundColor": "#041c22",
+  "statusBarCustomColor.foregroundColor": "#c2bcaa",
+  "statusBarCustomItem.icon": "🎏",
+  "statusBarCustomItem.text": "",
+
   
-    /** ------------ cursor ------------ **/
-    "editor.cursorSurroundingLines": 15,
-    "editor.cursorStyle": "line",
-    "editor.cursorSmoothCaretAnimation": "on",
-    "editor.cursorBlinking": "expand",
-  
-    /** ------------ Breadcrumbs Configurations ------------ **/
-    "breadcrumbs.enabled": false,
-    "breadcrumbs.symbolPath": "off",
-    "breadcrumbs.filePath": "on",
-  
-    /** ------------ Terminal Configurations ------------ **/
-    "terminal.integrated.defaultProfile.osx": "zsh",
-    "terminal.integrated.fontFamily": " 'Hack Nerd Font', Monospace",
-    "terminal.integrated.fontSize": 14,
-    "terminal.integrated.enableMultiLinePasteWarning": "always",
-    "terminal.integrated.cursorStyle": "underline",
-    "terminal.integrated.cursorBlinking": true,
-  
-    /** ------------ git ------------ **/
-    "git.enableSmartCommit": true,
-    "git.autofetch": true,
-  
-    /** ------------ suggest code editor ------------ **/
-    "editor.acceptSuggestionOnEnter": "smart",
-    "editor.inlineSuggest.suppressSuggestions": true,
-    "editor.suggest.showIcons": true,
-    "editor.quickSuggestions": {
-      "strings": true
-    },
-    "Codegeex.Privacy": true,
-    "Codegeex.Comment.LanguagePreference": "English",
-    "Codegeex.Chat.LanguagePreference": "English",
-    "Codegeex.CommitMessage.LanguagePreference": "English",
-  
-    /** ------------ formatting ------------ **/
-    "[vue]": {
-      "editor.defaultFormatter": "Vue.volar"
-    },
-    "[jsonc]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-  
-    /** ------------ custom vscode apc ------------ **/
-    "apc.header": {
-      "height": 30,
-      "fontSize": 15
-    },
-    "apc.statusBar": {
-      "position": "editor-bottom",
-      "height": 35,
-      "fontSize": 15
-    },
-  
-    /** ------------ color highlight ------------ **/
-    "color-highlight.markerType": "underline"
-  }
-  
+  "quokka.compactMessageOutput": true,
+  "quokka.automaticRestart": true
+}
