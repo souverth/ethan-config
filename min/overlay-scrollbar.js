@@ -1,23 +1,26 @@
 // ==UserScript==
-// @name         Overlay Scrollbars Auto-hide (Fast)
+// @name         Overlay Scrollbars Auto-hide (Fast, CSP-safe)
 // @match        *://*/*
 // @run-at       document-start
 // ==/UserScript==
 
 (function () {
-  const cssURL = 'https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.0/css/OverlayScrollbars.min.css';
   const jsURL = 'https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.0/js/OverlayScrollbars.min.js';
 
-  function inject(tag, attr) {
-    const el = document.createElement(tag);
-    Object.assign(el, attr);
-    document.head.appendChild(el);
-    return el;
+  function injectScript(src, onload, onerror) {
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = onload;
+    script.onerror = onerror;
+    document.head.appendChild(script);
   }
 
-  function fallbackScroll() {
+  function injectFallbackCSS() {
     const style = document.createElement('style');
     style.textContent = `
+      html, body {
+        overflow-x: hidden !important;
+      }
       ::-webkit-scrollbar {
         width: 8px; height: 8px;
       }
@@ -33,19 +36,21 @@
       ::-webkit-scrollbar-thumb:hover {
         background: linear-gradient(180deg, rgba(130,130,130,0.5), rgba(80,80,80,0.7));
       }
+      ::-webkit-scrollbar-corner {
+        background: transparent;
+      }
       scrollbar-width: thin;
+      overflow-x: hidden;
       scrollbar-color: rgba(120,120,120,0.3) transparent;
     `;
     document.head.appendChild(style);
   }
 
-  const ready = setInterval(() => {
-    if (!document.head) return;
-    clearInterval(ready);
+  const init = setInterval(() => {
+    if (!document.body || !document.head) return;
+    clearInterval(init);
 
-    inject('link', { rel: 'stylesheet', href: cssURL });
-    const script = inject('script', { src: jsURL });
-    script.onload = () => {
+    injectScript(jsURL, () => {
       try {
         OverlayScrollbars(document.body, {
           className: 'os-theme-dark',
@@ -58,9 +63,11 @@
         });
       } catch (e) {
         console.warn('OverlayScrollbars failed:', e);
-        fallbackScroll();
+        injectFallbackCSS();
       }
-    };
-    script.onerror = fallbackScroll;
-  }, 5);
+    }, () => {
+      console.warn('OverlayScrollbars bị chặn hoặc lỗi tải.');
+      injectFallbackCSS();
+    });
+  }, 20);
 })();
