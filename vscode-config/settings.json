@@ -1,121 +1,254 @@
 {
-  /** ------------ editor setting ------------ **/
-  "editor.fontFamily": "'Fira Code', 'Hack Nerd Font', SF Mono , Monospace",
-  "workbench.iconTheme": "material-icon-theme",
-  "editor.fontLigatures": "'calt', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'zero', 'onum'",
-  "editor.lineHeight": 1.8,
-  "editor.fontSize": 15,
-  "editor.fontWeight": 450,
-  "editor.mouseWheelZoom": true,
-  "editor.multiCursorModifier": "ctrlCmd",
-  "editor.guides.bracketPairs": true,
-  "editor.scrollbar.vertical": "hidden",
-  "editor.scrollbar.verticalScrollbarSize": 0,
-  "editor.scrollbar.horizontal": "hidden",
-  "editor.minimap.autohide": true,
-  "workbench.productIconTheme": "bongocat",
-  "editor.scrollbar.horizontalScrollbarSize": 0,
-  "editor.lineNumbers": "on",
-  "editor.renderFinalNewline":"off",
-  "editor.folding": true,
-  "editor.glyphMargin": true,
-  "editor.guides.indentation": false,
-  "workbench.editor.highlightModifiedTabs": true,
-  "editor.unicodeHighlight.ambiguousCharacters": false,
-  "editor.unicodeHighlight.invisibleCharacters": false,
-  "editor.stickyScroll.enabled": false,
-  "workbench.tree.indent": 16,
+  // ========== 🔧 PERFORMANCE OPTIMIZATIONS ==========
+  "editor.minimap.showSlider": "always",
+  "editor.minimap.size": "proportional",
+  "editor.minimap.scale": 1,
+  "editor.smoothScrolling": true,
+  "editor.largeFileOptimizations": false,
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.git/objects/**": true,
+    "**/dist/**": true,
+    "**/.trunk/*": true
+  },
+  "explorer.openEditors.visible": 1,
+  "workbench.enableExperiments": false,
   "workbench.startupEditor": "none",
+  "files.maxConcurrentThreads": 4,
+  "search.maxResults": 1000,
+  "typescript.tsserver.maxTsServerMemory": 4096,
+  "security.workspace.trust.untrustedFiles": "open",
+  "workbench.tips.enabled": false,
+  "workbench.editor.restoreViewState": false,
+
+  // ========== 📝 CORE EDITOR SETTINGS ==========
+  "editor.fontFamily": "SF Mono, 'Fira Code', 'SF Pro Text Medium' , monospace",
+  "editor.fontSize": 13,
+  "editor.fontWeight": 500,
+  "editor.lineHeight": 1.8,
+  "editor.tabSize": 6,
+  "workbench.editor.showTabs": "multiple",
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.renderFinalNewline": "off",
+  "editor.folding": true,
+  "editor.guides.indentation": false,
+  "editor.stickyScroll.enabled": false,
+  "editor.renderControlCharacters": false,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorSurroundingLines": 15,
+  "editor.scrollbar.vertical": "hidden",
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.scrollbar.verticalScrollbarSize": 0,
+  "editor.scrollbar.horizontalScrollbarSize": 0,
+  "editor.mouseWheelZoom": true,
+  "editor.cursorBlinking": "solid",
+  "editor.colorDecorators": false, // Tắt preview màu trong file CSS nếu không cần
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "comment",
+        "settings": {
+          "fontStyle": "italic",
+          "foreground": "#7f848e"
+        }
+      }
+    ]
+  },
+
+  // ========== 🧠 INTELLIGENT CODING ==========
+  "editor.acceptSuggestionOnEnter": "smart",
+  "editor.suggest.showIcons": true,
+  "editor.suggestSelection": "first",
+  "editor.quickSuggestionsDelay": 100,
+  "editor.quickSuggestions": {
+    "strings": true,
+    "comments": false,
+    "other": true
+  },
+  "editor.autoClosingBrackets": "always",
+  "editor.autoClosingQuotes": "always",
+  "editor.autoSurround": "languageDefined",
+  "editor.snippetSuggestions": "inline",
+  "editor.wordBasedSuggestions": "allDocuments",
+  "editor.suggest.preview": true,
+  "editor.inlineSuggest.suppressSuggestions": true,
+
+  // ========== 🌈 UI CUSTOMIZATION ==========
+  "workbench.iconTheme": "flow-light",
+  "workbench.productIconTheme": "bongocat",
+  "workbench.tree.indent": 16,
+  "workbench.tree.renderIndentGuides": "none",
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.value": 3,
+  "workbench.activityBar.location": "top",
+  "breadcrumbs.enabled": false,
+  "window.restoreWindows": "none",
+  "window.newWindowDimensions": "inherit",
+  "window.zoomLevel": -1,
+  "window.zoomPerWindow": true,
+  "window.density.editorTabHeight": "compact",
+  "glassit.alpha": 255,
+
+  // ========== 🎨 COLOR CUSTOMIZATION ==========
   "workbench.colorCustomizations": {
-    "inlineparameters.annotationBackground": "#282A3600",
-    "inlineparameters.annotationForeground": "#7b82af",
-    "scrollbar.shadow": "#24292e00",
-    "statusBar.background": "#041c22",
+    "editorBracketHighlight.foreground1": "#FFB86C",
+    "editorBracketHighlight.foreground2": "#FF79C6",
+    "editorBracketHighlight.foreground3": "#BD93F9",
+    "editorBracketHighlight.foreground4": "#50FA7B",
+    "editorBracketHighlight.foreground5": "#F1FA8C",
+    "editorBracketHighlight.foreground6": "#8BE9FD",
+    "editorBracketHighlight.unexpectedBracket.foreground": "#FF5555",
+    "statusBar.background": "#171717",
     "statusBar.noFolderBackground": "#000000",
     "statusBar.debuggingBackground": "#000000",
-    "statusBar.foreground": "#c2bcaa",
-    "statusBar.debuggingForeground": "#c2bcaa"
+    "statusBar.foreground": "#FFFFFF",
+    "statusBar.debuggingForeground": "#FFFFFF"
   },
-  "workbench.editorLargeFileConfirmation": 10024,
-  "workbench.editor.empty.hint": "hidden",
-  "explorer.sortOrder": "type",
-  "workbench.editor.limit.enabled": true,
-  "workbench.editor.limit.value": 4,
 
-  /** ------------ cursor ------------ **/
-  "editor.cursorSurroundingLines": 15,
-  "editor.cursorStyle": "line",
-  "editor.cursorSmoothCaretAnimation": "on",
-  "editor.cursorBlinking": "expand",
+  // ========== 🐱 GITHUB COPILOT ==========
+  "github.copilot.chat.edits.temporalContext.enabled": true,
+  "github.copilot.chat.editor.temporalContext.enabled": true,
 
-  /** ------------ Breadcrumbs Configurations ------------ **/
-  "breadcrumbs.enabled": false,
-  "breadcrumbs.symbolPath": "off",
-  "breadcrumbs.filePath": "on",
+  // ========== 🧪 ERROR LENS ==========
+  "errorLens.messageTemplate": "$severity $message",
+  "errorLens.severityText": ["🍎", "🍊", "◉", "⛆"],
+  "errorLens.replace": [
+    { "matcher": "Missing semicolon", "message": ";" },
+    { "matcher": "Missing return type on (.+)", "message": "Type $1" },
+    { "matcher": "Missing return type on", "message": "<==" },
+    { "matcher": "Missing return type on", "message": "(。_。)" },
+    { "matcher": "Unexpected token", "message": "🔴" },
+    { "matcher": "Cannot find name '(.+)'", "message": "Name $1 not found" },
+    {
+      "matcher": "Property '(.+)' does not exist on type '(.+)'",
+      "message": "Property $1 not in $2"
+    },
+    { "matcher": "Unexpected end of input", "message": "EOF" },
+    {
+      "matcher": "Unterminated string constant",
+      "message": "String not closed"
+    }
+  ],
+  "errorLens.gutterIconsEnabled": true,
+  "errorLens.gutterEmoji": {
+    "error": "🔥",
+    "warning": "🍊",
+    "info": "😶‍🌫️",
+    "hint": "🍎"
+  },
+  "errorLens.scrollbarHackEnabled": true,
+  "errorLens.codeLensTemplate": "$severity",
+  "errorLens.decorations": {
+    "warningMessage": {
+      "textDecoration": ";background:linear-gradient(to right, #cca726, #ff8800);border-radius:0.3em;padding:0 0.5ch;",
+      "color": "#fff",
+      "fontWeight": "bold"
+    },
+    "errorMessage": {
+      "textDecoration": ";background:linear-gradient(to right, #d044eb, #ff0000);border-radius:0.3em;padding:0 0.5ch;",
+      "color": "#fff",
+      "fontWeight": "bold"
+    },
+    "infoMessage": {
+      "textDecoration": ";background:linear-gradient(to right, #0088ff, #0a9c33);border-radius:0.3em;padding:0 0.5ch;",
+      "color": "#fff",
+      "fontWeight": "bold"
+    }
+  },
 
-  /** ------------ Terminal Configurations ------------ **/
-  "terminal.integrated.defaultProfile.osx": "zsh",
-  "terminal.integrated.fontFamily": " 'Hack Nerd Font', Monospace",
-  "terminal.integrated.fontSize": 14,
-  "terminal.integrated.enableMultiLinePasteWarning": "always",
-  "terminal.integrated.cursorStyle": "underline",
-  "terminal.integrated.cursorBlinking": true,
-
-  /** ------------ git ------------ **/
+  // ========== 🧪 GIT SETTINGS ==========
   "git.enableSmartCommit": true,
   "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.openRepositoryInParentFolders": "always",
 
-  /** ------------ suggest code editor ------------ **/
-  "editor.acceptSuggestionOnEnter": "smart",
-  "editor.inlineSuggest.suppressSuggestions": true,
-  "editor.suggest.showIcons": true,
-  "editor.quickSuggestions": {
-    "strings": true
+  // ========== 🖥️ TERMINAL ==========
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.gpuAcceleration": "on",
+  "terminal.integrated.fontFamily": "'Hack Nerd Font', Monospace",
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.cursorStyle": "underline",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.shellIntegration.enabled": true,
+  "terminal.integrated.shellIntegration.showCommandGuide": true,
+  "terminal.integrated.suggest.enabled": true,
+  "terminal.integrated.suggest.builtinCompletions": true,
+
+  // ========== 🧼 FORMAT & LINT ==========
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
   },
-  "Codegeex.Privacy": true,
-  "Codegeex.Comment.LanguagePreference": "English",
-  "Codegeex.Chat.LanguagePreference": "English",
-  "Codegeex.CommitMessage.LanguagePreference": "English",
-
-  /** ------------ formatting ------------ **/
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[vue]": {
     "editor.defaultFormatter": "Vue.volar"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-
-  /** ------------ custom vscode apc ------------ **/
-  "workbench.activityBar.location": "hidden",
-  "apc.electron": {    "frame": false,
-    "backgroundColor": "rgba(123, 123, 123, 0.5)",
-    "titleBarStyle": "hiddenInset",
-    "opacity": 0.9, 
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "window.titleBarStyle": "native",
-  "window.customTitleBarVisibility": "never",
-  "apc.header": {
-    "height": 24,
-    "fontSize": 13
-  },
-  "apc.statusBar": {
-    "position": "editor-bottom",
-    "height": 35,
-    "fontSize": 15
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
 
-  /** ------------ color highlight ------------ **/
-  "color-highlight.markerType": "underline",
-  "workbench.colorTheme": "Solarized Osaka",
-  "window.density.editorTabHeight": "compact",
+  // ========== 📁 FILE & EXPLORER ==========
+  "explorer.sortOrder": "type",
+  "explorer.compactFolders": false,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/.trunk/*": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/.git": true
+  },
 
-  /** ------------ status bar ------------ **/
-  "statusBarCustomColor.primaryBackgroundColor": "#041c22",
-  "statusBarCustomColor.foregroundColor": "#c2bcaa",
-  "statusBarCustomItem.icon": "🎏",
-  "statusBarCustomItem.text": "",
+  // ========== 🧠 LANGUAGE SPECIFIC ==========
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "vue.server.hybridMode": true,
 
-  
-  "quokka.compactMessageOutput": true,
-  "quokka.automaticRestart": true
+  // ========== 🐾 FUN STUFF ==========
+  "powermode.enabled": true,
+  "powermode.combo.counterEnabled": "hide",
+  "powermode.combo.timerEnabled": "hide",
+  "powermode.shake.enabled": false,
+  "vscode-pets.petSize": "medium",
+  "vscode-pets.theme": "winter",
+
+  // ========== 🧼 MISC ==========
+  "diffEditor.codeLens": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "cody.commandCodeLenses": true,
+  "emptyIndent.removeIndent": true,
+  "emptyIndent.highlightIndent": true,
+  "emptyIndent.highlightColor": "rgba(246,36,89,0.6)",
+  "emptyIndent.exclude": [
+    ".md",
+    ".json",
+    ".log",
+    ".js",
+    ".jsx",
+    ".tsx",
+    ".vue"
+  ],
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:claude-3.5-sonnet"
 }
