@@ -20,7 +20,7 @@
     style.textContent = `
       * {
         scrollbar-width: thin;
-        scrollbar-color: #e0e0e0 transparent;
+        scrollbar-color: #cfcfcf #f5f5f5;
       }
 
       ::-webkit-scrollbar {
@@ -29,19 +29,21 @@
       }
 
       ::-webkit-scrollbar-track {
-        background: transparent;
+        background: #f5f5f5;
+        border-radius: 8px;
       }
 
       ::-webkit-scrollbar-thumb {
-        background: #e0e0e0;
-        border-radius: 10px;
-        box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
-        transition: background 0.3s ease, box-shadow 0.3s ease;
+        background: linear-gradient(180deg, #dadada, #b0b0b0);
+        border-radius: 8px;
+        border: 2px solid #f5f5f5;
+        box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.05);
+        transition: background 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
       }
 
       ::-webkit-scrollbar-thumb:hover {
-        background: #ffffff;
-        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+        background: linear-gradient(180deg, #ffffff, #c0c0c0);
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
       }
     `;
     document.head.appendChild(style);
