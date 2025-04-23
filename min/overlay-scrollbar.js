@@ -1,56 +1,61 @@
 // ==UserScript==
-// @name         Overlay Scrollbars Auto-hide (Fast, CSP-safe)
+// @name         Overlay Scrollbars Auto-hide (Fast)
 // @match        *://*/*
 // @run-at       document-start
 // ==/UserScript==
 
 (function () {
+  const cssURL = 'https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.0/css/OverlayScrollbars.min.css';
   const jsURL = 'https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.0/js/OverlayScrollbars.min.js';
 
-  function injectScript(src, onload, onerror) {
-    const script = document.createElement('script');
-    script.src = src;
-    script.onload = onload;
-    script.onerror = onerror;
-    document.head.appendChild(script);
+  function inject(tag, attr) {
+    const el = document.createElement(tag);
+    Object.assign(el, attr);
+    document.head.appendChild(el);
+    return el;
   }
 
-  function injectFallbackCSS() {
+  function fallbackScroll() {
     const style = document.createElement('style');
     style.textContent = `
-      html, body {
-        overflow-x: hidden !important;
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #e0e0e0 transparent;
       }
+
       ::-webkit-scrollbar {
-        width: 8px; height: 8px;
+        width: 10px;
+        height: 10px;
       }
+
       ::-webkit-scrollbar-track {
         background: transparent;
       }
+
       ::-webkit-scrollbar-thumb {
-        background: linear-gradient(180deg, rgba(150,150,150,0.2), rgba(100,100,100,0.3));
+        background: #e0e0e0;
         border-radius: 10px;
-        backdrop-filter: blur(2px);
-        transition: background 0.3s ease;
+        box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+        transition: background 0.3s ease, box-shadow 0.3s ease;
       }
+
       ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(180deg, rgba(130,130,130,0.5), rgba(80,80,80,0.7));
+        background: #ffffff;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
       }
-      ::-webkit-scrollbar-corner {
-        background: transparent;
-      }
-      scrollbar-width: thin;
-      overflow-x: hidden;
-      scrollbar-color: rgba(120,120,120,0.3) transparent;
     `;
     document.head.appendChild(style);
   }
 
-  const init = setInterval(() => {
-    if (!document.body || !document.head) return;
-    clearInterval(init);
 
-    injectScript(jsURL, () => {
+
+  const ready = setInterval(() => {
+    if (!document.head) return;
+    clearInterval(ready);
+
+    inject('link', { rel: 'stylesheet', href: cssURL });
+    const script = inject('script', { src: jsURL });
+    script.onload = () => {
       try {
         OverlayScrollbars(document.body, {
           className: 'os-theme-dark',
@@ -63,11 +68,9 @@
         });
       } catch (e) {
         console.warn('OverlayScrollbars failed:', e);
-        injectFallbackCSS();
+        fallbackScroll();
       }
-    }, () => {
-      console.warn('OverlayScrollbars bị chặn hoặc lỗi tải.');
-      injectFallbackCSS();
-    });
-  }, 20);
+    };
+    script.onerror = fallbackScroll;
+  }, 5);
 })();
