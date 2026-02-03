@@ -1,0 +1,201 @@
+/* === DEBUG MODE (tùy chọn) === */
+:root {
+  --debug-mode: 0; /* Đặt 1 để bật border debug */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --debug-border-color: 255, 0, 0;
+    --debug-bg-color: 255, 0, 0;
+    --debug-border-width: calc(var(--debug-mode) * 2px);
+    --debug-bg-opacity: calc(var(--debug-mode) * 0.1);
+    --accent-color: #1c1b22;
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --debug-border-color: 0, 0, 255;
+    --debug-bg-color: 0, 0, 255;
+    --debug-border-width: calc(var(--debug-mode) * 2px);
+    --debug-bg-opacity: calc(var(--debug-mode) * 0.1);
+    --accent-color: #fafafc;
+  }
+}
+
+/* Áp debug border cho các phần tử chính */
+#navigator-toolbox,
+#nav-bar,
+#TabsToolbar,
+#tabbrowser-tabs,
+#urlbar-container,
+#unified-extensions-button,
+#firefox-view-button,
+#tabs-newtab-button {
+  border: var(--debug-border-width) solid rgb(var(--debug-border-color)) !important;
+  background: rgba(var(--debug-bg-color), var(--debug-bg-opacity)) !important;
+}
+
+/* === ẨN CÁC THÀNH PHẦN KHÔNG CẦN THIẾT === */
+#toolbar-menubar,
+#identity-box,
+#tracking-protection-icon-container,
+#page-action-buttons > :not(#urlbar-zoom-button, #star-button-box, #unified-extensions-button, #firefox-view-button),
+#urlbar-go-button,
+#alltabs-button,
+.titlebar-spacer,
+#PanelUI-menu-button,
+#nav-bar-overflow-button,
+.titlebar-buttonbox-container {
+  display: none !important;
+}
+
+/* === GIAO DIỆN CHÍNH === */
+
+/* 1. Tắt titlebar mặc định */
+#titlebar {
+  display: none !important;
+}
+
+/* 2. Biến navigator-toolbox thành flex container HÀNG NGANG */
+#navigator-toolbox {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 0 !important;
+  padding: 0 4px !important;
+  background: var(--accent-color) !important;
+  border-bottom: none !important;
+}
+
+/* 3. NAV-BAR: chứa urlbar, extensions, firefox-view */
+#nav-bar {
+  order: 1 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  background: transparent !important;
+  gap: 5px !important;
+  flex: 0 0 auto !important;
+  min-height: var(--urlbar-toolbar-height, 39px) !important;
+}
+
+/* URL bar */
+#nav-bar > #urlbar-container {
+  order: 1 !important;
+  flex: 1 0 300px !important;
+  min-width: 300px !important;
+}
+
+#urlbar,
+#urlbar-background,
+#urlbar-input-container {
+  background: var(--accent-color) !important;
+  border: none !important;
+}
+
+/* Extensions & Firefox View */
+#nav-bar > #firefox-view-button {
+  order: 2 !important;
+  flex: 0 0 auto !important;
+}
+
+#nav-bar > #unified-extensions-button {
+  order: 3 !important;
+  flex: 0 0 auto !important;
+}
+
+/* 4. TABS TOOLBAR: nhúng vào cùng hàng */
+#TabsToolbar {
+  order: 2 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  background: transparent !important;
+  flex: 1 1 auto !important;
+  padding: 0 0 0 5px !important;
+  min-height: var(--urlbar-toolbar-height, 39px) !important;
+  overflow: hidden !important;
+  min-width: 0 !important;
+  /* Không cần position: relative nữa */
+}
+
+/* Container chứa tabs - CHO PHÉP SCROLL */
+#tabbrowser-tabs {
+  flex: 1 1 auto !important;
+  overflow: hidden !important;
+  display: flex !important;
+  min-width: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Container cuộn tab */
+#tabbrowser-arrowscrollbox {
+  display: flex !important;
+  flex: 1 1 auto !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scrollbar-width: thin !important;
+  align-items: center !important;
+  min-width: 0 !important;
+  /* Không cần padding-right nữa */
+}
+
+/* Tab item */
+.tabbrowser-tab {
+  flex: 0 0 auto !important;
+  margin: 0 2px !important;
+  min-height: 32px !important;
+  min-width: 100px !important;
+}
+
+/* === NÚT NEW TAB: ĐẨY SANG PHẢI BẰNG FLEX (ỔN ĐỊNH, KHÔNG BUG) === */
+#tabs-newtab-button {
+  margin-left: auto !important;     /* ← Đẩy sang phải */
+  flex: 0 0 auto !important;
+  order: 999 !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 6px !important;
+}
+
+/* === HIỆU ỨNG TUỲ CHỈNH === */
+
+/* Ẩn nút back/forward khi disabled */
+#back-button[disabled="true"],
+#forward-button[disabled="true"] {
+  margin-left: -34px !important;
+  opacity: 0 !important;
+  transform: scale(0.8, 0.8) !important;
+  pointer-events: none !important;
+  transition:
+    margin-left 150ms,
+    opacity 250ms,
+    transform 350ms !important;
+}
+
+/* Đảm bảo chiều cao URL bar đúng */
+:root[uidensity="compact"] #urlbar {
+  --urlbar-toolbar-height: 39px !important;
+}
+:root[uidensity="normal"] #urlbar {
+  --urlbar-toolbar-height: 42px !important;
+}
+:root[uidensity="touch"] #urlbar {
+  --urlbar-toolbar-height: 49px !important;
+}
+
+/* Xử lý responsive */
+@media (max-width: 1000px) {
+  #nav-bar > #urlbar-container {
+    min-width: 200px !important;
+  }
+}
+
+#tabs-newtab-button {
+  display: none;
+}
+
+
+#scrollbutton-down, #scrollbutton-up {
+  display: flex;
+}
